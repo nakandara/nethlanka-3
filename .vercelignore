@@ -1,0 +1,4 @@
+# .vercelignore
+*.log
+videos/
+tmp/
