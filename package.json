@@ -5,11 +5,10 @@
   "scripts": {
     "validate-images": "ts-node scripts/validate-images.ts",
     "dev": "ts-node scripts/validate-images.ts --dry-run && next dev",
-    "build": "ts-node scripts/validate-images.ts --dry-run && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predev": "ts-node scripts/validate-images.ts",
-    "prebuild": "ts-node scripts/validate-images.ts"
+    "prebuild": "ts-node scripts/validate-images.ts --dry-run"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
