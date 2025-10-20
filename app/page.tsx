@@ -1,103 +1,119 @@
-import Image from "next/image";
+"use client"
+
+import { ArrowRight } from "lucide-react"
+import FeaturedCollections from "@/components/featured-collections"
+import AnimatedButton from "@/components/animated-button"
+import { motion } from "framer-motion"
+import HeroSlider from "@/components/hero-slider"
+import Image from "next/image"
+import { HeroGalleryScroll } from "@/components/hero-gallery-scroll"
+import { DynamicFrame } from "@/components/dynamic-frame"
+import { LayoutGridDemo } from "@/components/layout-image-grid"
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col min-h-screen">
+      {/* Spacer for header */}
+      <div className="header-height"></div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero Section with Slider */}
+      <HeroGalleryScroll />
+
+      {/* Hero Section with Slider 
+      <HeroSlider />*/}
+
+      {/* Introduction */}
+      <section id="introduction" className="mt-32 mb-20 sm:py-0 py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl mb-6">The Art of Visual Storytelling</h2>
+            <p className="text-primary-secondary mb-6">
+              Every photograph tells a story, captures an emotion, and preserves a moment in time. My work focuses on
+              finding beauty in both grand landscapes and subtle details.
+            </p>
+            <p className="text-primary-secondary mb-8">
+              Explore my collections from around the world, each with its own unique perspective and narrative.
+            </p>
+            <AnimatedButton href="/about" variant="outline" icon={<ArrowRight size={16} />}>
+              Learn More About The Journey
+            </AnimatedButton>
+          </motion.div>
+          <motion.div
+            className="relative h-[500px] rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/Morocco/morocco-9.webp?height=1000&width=800"
+              alt="Photographer at work"
+              fill
+              className="object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Dynamic Frame Section 
+      <DynamicFrame />*/}
+
+      {/* Layout Grid Section */}
+      <LayoutGridDemo />
+
+       {/* Call to Action */}
+      <section className="z-10 min-w-[90%] justify-self-center mr-4 ml-4 py-20 lg:my-20 sm:mt-0 sm:mb-20 px-4 md:px-8 px-2 rounded-3xl border-[1px] border-border">
+        <motion.div
+          className="max-w-7xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <h2 className="text-primary text-3xl md:text-4xl mb-6">Collaborate?</h2>
+          <p className="text-primary max-w-2xl mx-auto mb-8">
+            Whether you're looking for prints, licensing, or a custom photography project, feel free to get in touch.
+          </p>
+          <AnimatedButton href="/contact" variant="primary" icon={<ArrowRight size={18} />}>
+            Get in Touch
+          </AnimatedButton>
+        </motion.div>
+      </section>
+
+      {/* Featured Collections */}
+      <section className="lg:mt-32 mb-32 px-4 md:px-8 z-10 mt-20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-primary text-3xl md:text-4xl mb-4">Featured Collections</h2>
+            <p className="text-primary max-w-2xl mx-auto">
+              Explore some of my most popular photography collections from around the world
+            </p>
+          </motion.div>
+          <FeaturedCollections />
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <AnimatedButton href="/showcase" variant="primary" icon={<ArrowRight size={18} />}>
+              View All Collections
+            </AnimatedButton>
+          </motion.div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
